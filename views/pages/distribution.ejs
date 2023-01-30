@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Drag and drop</title>
+		<meta charest="UTF-8" />
+		<link rel="stylesheet" href="client/styles/distribution.css" />
+	</head>
+
+	<script>
+
+
+		function start(e){
+			e.dataTransfer.effectAllowed="copy";
+			
+			/*e.dataTransfer.setData("text",e.target.getAttribute("id"));*/
+			e.dataTransfer.setData("text/plain",event.target.id);
+		}
+
+
+		function over(e){
+			/*e.currentTarget.className="class1";*/
+			event.preventDefault();
+
+			/*return false;*/
+		}
+
+
+		function drop(e){
+			/*ob=e.dataTransfer.getData("text");
+			e.currentTarget.appendChild(document.getElementById(ob));
+
+			e.stopPropagation();
+			return false;*/
+			
+			const id = e.dataTransfer.getData("text");
+			const draggableElement = document.getElementById(id);
+			const dropzone = event.target;
+			const newElement = draggableElement.cloneNode(true);
+
+			dropzone.appendChild(newElement);
+			/*event.dataTransfer.clearData();*/
+			/*e.dataTransfer.clearData();*/
+			event.preventDefault();
+
+
+			//alert(`La zone de dépose a pour identifiant: ${event.target.id}`);
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+		/*function leave(e){
+			e.currentTarget.className="class1";
+		}*/
+
+	</script>
+	<body>
+		<div class="container">
+			<div class="class1" onDragStart="start(event)" onDragOver="return over(event)"  >
+				<img src="client/images/im1.jpg"	id="1" draggable="true" />
+				<img src="client/images/im2.jpg"	id="2" draggable="true"/>
+				<img src="client/images/im3.jpg"	id="3" draggable="true"/>
+				<img src="client/images/im4.jpg" data-url="192.168.1.44:3000/ephemeride"	id="4" draggable="true"/>
+				<img src="client/images/im6.jpg"	id="6" draggable="true"/>
+			</div>
+
+
+			<!--<div class="class2" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave="leave(event)">-->
+			<div class="class2"id="ici1" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event)" > <h1>Elèves</h1> </div>
+			<div class="class3"id="ici2" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" ><h1>Etudiants</h1> </div>
+			<div class="class4" id="ici3" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event)" ><h1>Professeurs</h1> </div>
+			<div class="class5" id="ici4" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event)" ><h1>Administrations</h1> </div>
+
+			<div class="class6" id="ici5" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" > <h1>Poubelle</h1>
+				
+
+			 </div>
+			<!--<div class="class3"  onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave="leave(event)"> -->
+
+
+			</div>
+		
+	</body>
+</html>
