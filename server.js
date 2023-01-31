@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require("path")  
 const app = express();
+const axios = require('axios')
+
 
 // Utiliser EJS comme moteur de template
 app.set('view engine', 'ejs')
@@ -9,6 +11,14 @@ app.set('view engine', 'ejs')
 app.use('/client', express.static(__dirname + '/client'))
 
 app.get("/", (req, res) => {
+    axios.get('http://172.16.157.101:81/CCF/PHP/index.php')
+        .then((response) => {
+            res.send(response.data)
+        })
+        .catch((error) => {
+            res.send(error)
+        })
+
     res.render('pages/index')
 })
 
