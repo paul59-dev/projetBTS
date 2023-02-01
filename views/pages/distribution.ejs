@@ -40,7 +40,7 @@
 			{
 			//	alert(element );
 				if ($.inArray(element, myArray) != -1)
-				  return true	;
+				  	return true	;
 				else
 					return false;
 			}
@@ -142,18 +142,16 @@
 				<img src="client/images/im6.jpg"	id="PAUL" draggable="true"/>
 			</div>
 
-
+			<div class="class6">
+				<div class="class2" id="ELEVES" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Elèves</div>
+				<div class="class3" id="ETUDIANTS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Etudiants</div>
+				<div class="class4" id="PROFESSEURS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Professeurs</div>
+				<div class="class5" id="ADMINISTRATIFS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Administrations</div>
+			</div>
 			<!--<div class="class2" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave="leave(event)">-->
-			<div class="class2" id="ELEVES" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)"><h1>Elèves</h1> </div>
-			<div class="class3" id="ETUDIANTS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)"><h1>Etudiants</h1> </div>
-			<div class="class4" id="PROFESSEURS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)"><h1>Professeurs</h1> </div>
-			<div class="class5" id="ADMINISTRATIFS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)"><h1>Administrations</h1> </div>
 
 			<!-- <div class="class6" id="ici5" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" > <h1>Poubelle</h1> -->
-				
-
-			 </div>
 			<!--<div class="class3"  onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave="leave(event)"> -->
-			</div>
+		</div>
 	</body>
 </html>
