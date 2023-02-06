@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const API_KEY = "1ebf219d93784885e89abcae48e8ec81";
+        const city = "Paris";
+        const url = `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={API_KEY}`;
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+                
+
+    </script>
+</body>
+</html>

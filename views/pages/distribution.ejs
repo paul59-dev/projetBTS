@@ -94,6 +94,7 @@
 				return false;*/
 				
 				const id = e.dataTransfer.getData("text");
+				//let newURI = window.location.href = "distribution?param=" + id + "?destination=" + destinationId
 				//alert(destinationId);	// id de la Destination
 				if(notFind(destinationId,id))
 				{					
@@ -109,6 +110,8 @@
 				}
 
 				//alert(`La zone de dépose a pour identifiant: ${event.target.id}`);
+				alert("Photo " + id + " déposée dans la zone " + destinationId);
+
 
 			}
 

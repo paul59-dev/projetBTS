@@ -34,7 +34,7 @@ app.get("/ephemeride", (req, res) => {
 
 // Meteo
 app.get("/meteo", (req, res) => {
-    res.send("Meteo")
+    res.render("pages/meteo")
 })
 
 // Menu Cantine
