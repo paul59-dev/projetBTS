@@ -65,6 +65,36 @@ app.get("/prof", (req, res) => {
 })
 
 
+app.use((req, res, next) => {
+    if (req.body.id && req.body.destinationID) {
+        const { id, destinationID } = req.body;
+        req.id = id;
+        req.destinationID = destinationID;
+        next();
+    } else {
+        res.status(400).send({ message: 'Données manquantes' });
+    }
+});
+
+app.get("/etudiant", (req, res) => {
+
+})
+
+app.post('/etudiant', (req, res) => {
+    const { id, destinationID } = req;
+    console.log(`id: ${id}`);
+    console.log(`destinationID: ${destinationID}`);
+    res.send(id)
+    if (req.body.id="METEO"){
+        res.render("pages/meteo")
+    }
+    // Traitez les données ici
+    res.send({ message: 'Données reçues !' });
+});
+
+
+
+
 app.listen(3000, () => {
     console.log("Server started on port 3000")
 })

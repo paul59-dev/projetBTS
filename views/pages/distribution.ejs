@@ -5,7 +5,7 @@
 	  <meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="client/styles/distribution.css" />
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
@@ -111,6 +111,20 @@
 
 				//alert(`La zone de dépose a pour identifiant: ${event.target.id}`);
 				alert("Photo " + id + " déposée dans la zone " + destinationId);
+
+				$.ajax({
+					url: 'http://127.0.0.1:3000/etudiant',
+					type: 'POST',
+					data: {id: id, destinationID: destinationId},
+					success: function(data) {
+						console.log('Data sent to server:', data);
+					},
+					error: function(resultat, statut, erreur) {
+						alert(resultat);
+						console.log(statut)
+						console.log(erreur)
+					}
+				});
 
 
 			}
