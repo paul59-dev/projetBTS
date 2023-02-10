@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	  <title>Drag and drop</title>
-	  <meta charset="utf-8">
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link rel="stylesheet" href="client/styles/distribution.css" />
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<title>Drag and drop</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="client/styles/distribution.css" />
 
-
-
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script>
+			//const axios = require("axios")
+
 			var Etudiants = [];
 			var Administratifs = [];
 			var Professeurs = [];
 			var Eleves = [];
+			
+			
 			$(function()
 			{
-
-			})
-
+				$("#ETUDIANTS, #PROFESSEURS, #ELEVES, #ADMINISTRATIFS").on("dblclick", "img", function()
+				{
+					$(this).remove();
+					const id = $(this).attr("id");
+					Etudiants = Etudiants.filter(elem => elem !== id);
+					Administratifs = Administratifs.filter(elem => elem !== id);
+					Professeurs = Professeurs.filter(elem => elem !== id);
+					Eleves = Eleves.filter(elem => elem !== id);
+				});
+		
+			});
 
 			function start(e){
 				e.dataTransfer.effectAllowed="copy";
@@ -34,18 +47,16 @@
 
 				/*return false;*/
 			}
-
+			
 			// permet de savoir si le contenu est déjà présent dans le conteneur
 			function find(myArray, element)
 			{
 			//	alert(element );
 				if ($.inArray(element, myArray) != -1)
-				  	return true	;
+					return true	;
 				else
 					return false;
-			}
-
-
+				}
 			// Dépôts des contenus au sein des conteneurs
 			function notFind(destinationId,id)
 			{
@@ -72,7 +83,7 @@
 						}
 						
 						break	;
-					case "PROFESSEURS":
+						case "PROFESSEURS":
 						if(!find(Professeurs,id))	{
 							Professeurs.push(id);
 							returnValue = true;
@@ -85,18 +96,19 @@
 				return returnValue	;
 			}
 
-
 			function drop(e,destinationId){
+				//var socket = io();
 				/*ob=e.dataTransfer.getData("text");
 				e.currentTarget.appendChild(document.getElementById(ob));
 
 				e.stopPropagation();
 				return false;*/
 				
-				const id = e.dataTransfer.getData("text");
+				let id = e.dataTransfer.getData("text");
+
 				//let newURI = window.location.href = "distribution?param=" + id + "?destination=" + destinationId
 				//alert(destinationId);	// id de la Destination
-				if(notFind(destinationId,id))
+				if(notFind(destinationId,id, e))
 				{					
 					const draggableElement = document.getElementById(id);
 					const dropzone = event.target;
@@ -106,42 +118,19 @@
 
 					/*event.dataTransfer.clearData();*/
 					/*e.dataTransfer.clearData();*/
-					event.preventDefault();
-				}
+					e.preventDefault();
+					//alert(`La zone de dépose a pour identifiant: ${event.target.id}`);
+					alert("Photo " + id + " déposée dans la zone " + destinationId)
+					//console.log(id)
 
-				//alert(`La zone de dépose a pour identifiant: ${event.target.id}`);
-				alert("Photo " + id + " déposée dans la zone " + destinationId);
-
-				$.ajax({
-					url: 'http://127.0.0.1:3000/etudiant',
-					type: 'POST',
-					data: {id: id, destinationID: destinationId},
-					success: function(data) {
-						console.log('Data sent to server:', data);
-					},
-					error: function(resultat, statut, erreur) {
-						alert(resultat);
-						console.log(statut)
-						console.log(erreur)
-					}
-				});
-
-
+					fetch("http://127.0.0.1:3000/etudiant", {
+						method: "POST",	
+						body: JSON.stringify({ id: id }),
+						headers: { "Content-Type": "application/json" }
+					});
+					//window.location.href = "/etudiant?id=" + id;
 			}
-
-			$(document).ready(function(){
-		    $("#ETUDIANTS, #PROFESSEURS, #ELEVES, #ADMINISTRATIFS").on("dblclick", "img", function(){
-		        $(this).remove();
-		        const id = $(this).attr("id");
-		        Etudiants = Etudiants.filter(elem => elem !== id);
-		        Administratifs = Administratifs.filter(elem => elem !== id);
-		        Professeurs = Professeurs.filter(elem => elem !== id);
-		        Eleves = Eleves.filter(elem => elem !== id);
-		    });
-		});
-				
-
-
+		}
 		/*function leave(e){
 			e.currentTarget.className="class1";
 		}*/
@@ -156,7 +145,6 @@
 				<img src="client/images/im2.jpg"	id="MENU" draggable="true"/>
 				<img src="client/images/im3.jpg"	id="PA" draggable="true"/>
 				<img src="client/images/im4.jpg" 	data-url="192.168.1.44:3000/ephemeride"	id="EPHEMERIDES" draggable="true"/>
-				<img src="client/images/im6.jpg"	id="PAUL" draggable="true"/>
 			</div>
 
 			<div class="class6">
@@ -170,5 +158,6 @@
 			<!-- <div class="class6" id="ici5" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" > <h1>Poubelle</h1> -->
 			<!--<div class="class3"  onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave="leave(event)"> -->
 		</div>
+		
 	</body>
 </html>
