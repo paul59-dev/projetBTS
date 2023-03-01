@@ -24,6 +24,7 @@
     "express-session": "^1.17.3",
     "http": "^0.0.1-security",
     "jquery": "^3.6.3",
+    "mqtt": "^4.3.7",
     "nodejs-base64-converter": "^1.0.5",
     "nodemon": "^2.0.20",
     "request": "^2.88.2",
