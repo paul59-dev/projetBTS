@@ -39,7 +39,12 @@ app.route("/distribution")
 
 app.route("/meteo")
     .get((req, res) => {
-        res.send("Meteo")
+        res.send("Meteop")
+    })
+
+app.route("/editeur")
+    .get((req, res) => {
+        res.render("pages/editeur")
     })
 
 app.listen(3000, () => {

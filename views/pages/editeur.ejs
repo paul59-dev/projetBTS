@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/tinymce-colorpicker@0.5.1/plugin.min.js"></script>
+</head>
+<style>
+	a {
+		font-size: 1.5em;
+	}
+</style>
+<body>
+
+	<div class="container">
+		<form action="/editeur" methode="POST">
+			<textarea id="myTinyArea" name="myTinyArea"></textarea>
+			<button type="send">Envoyer</button>
+		</form>
+	</div>
+
+	<%- include("../partials/menu") %>
+	
+	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+	<script>
+		tinymce.init({
+      		selector: '#myTinyArea',
+      		height: 600,
+      		plugins: 'colorpicker',
+      		toolbar: 'undo redo | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat',
+      		menubar: false,
+      		color_map: [
+		      "000000", "Black",
+		      "808080", "Gray",
+		      "FF0000", "Red",
+		      "00FF00", "Green",
+		      "0000FF", "Blue"
+    		]
+    	});
+	</script>
+</body>
+</html>
