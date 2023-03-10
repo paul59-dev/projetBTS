@@ -3,7 +3,7 @@ const mqtt = require('mqtt')
 const bodyParser = require("body-parser");
 
 const app = express();
-const client = mqtt.connect('mqtt://172.16.100.117')
+const client = mqtt.connect('mqtt://172.16.200.2')
 
 // Utiliser EJS comme moteur de template
 app.set('view engine', 'ejs')

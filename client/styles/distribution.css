@@ -6,14 +6,15 @@
 body {
     width: 100%;
     height: 100vh;
+    overflow: hidden;
 }
 
-img {
+.hover-image {
     width: 100px;
     height: 100px;
 }
 
-img:hover {
+.hover-image:hover {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     transition: 0.2s ease-in;
 }
@@ -22,12 +23,14 @@ a {
     font-size: 2.5em;
 }
 
-.container {
-    width: 100%;
-    height: 100%;
+.container-distrib {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
+    flex: 1;
+    flex-shrink: 0;
 }
 
 .class1 {

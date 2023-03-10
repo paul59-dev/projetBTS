@@ -139,25 +139,27 @@
 	</head>
 
 	<body>
-		<div class="container">
-			<div class="class1" onDragStart="start(event)" onDragOver="return over(event)"  >
-				<img src="client/images/im1.jpg"	id="METEO" draggable="true" />
-				<img src="client/images/im2.jpg"	id="MENU" draggable="true"/>
-				<img src="client/images/im3.jpg"	id="PA" draggable="true"/>
-				<img src="client/images/im4.jpg" 	data-url="192.168.1.44:3000/ephemeride"	id="EPHEMERIDES" draggable="true"/>
-			</div>
+		<div class="gobal-container row">	
+			<%- include("../partials/menu") %>
+			<div class="container-distrib col-lg-10">
+				<div class="class1" onDragStart="start(event)" onDragOver="return over(event)"  >
+					<img src="client/images/im1.jpg" class="hover-image"	id="METEO" draggable="true" />
+					<img src="client/images/im2.jpg"	class="hover-image"	id="MENU" draggable="true"/>
+					<img src="client/images/im3.jpg" class="hover-image"	id="PA" draggable="true"/>
+					<img src="client/images/im4.jpg" class="hover-image"	id="EPHEMERIDES" draggable="true"/>
+				</div>
 
-			<div class="class6">
-				<div class="class2" id="ELEVES" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Elèves</div>
-				<div class="class3" id="ETUDIANTS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Etudiants</div>
-				<div class="class4" id="PROFESSEURS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Professeurs</div>
-				<div class="class5" id="ADMINISTRATIFS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Administrations</div>
-			</div>
-			<!--<div class="class2" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave="leave(event)">-->
+				<div class="class6">
+					<div class="class2" id="ELEVES" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Elèves</div>
+					<div class="class3" id="ETUDIANTS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Etudiants</div>
+					<div class="class4" id="PROFESSEURS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Professeurs</div>
+					<div class="class5" id="ADMINISTRATIFS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Administrations</div>
+				</div>
+				<!--<div class="class2" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave="leave(event)">-->
 
-			<!-- <div class="class6" id="ici5" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" > <h1>Poubelle</h1> -->
-			<!--<div class="class3"  onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave="leave(event)"> -->
+				<!-- <div class="class6" id="ici5" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" > <h1>Poubelle</h1> -->
+				<!--<div class="class3"  onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave="leave(event)"> -->
+			</div>
 		</div>
-		
 	</body>
 </html>
