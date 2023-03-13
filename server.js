@@ -37,6 +37,14 @@ app.route("/distribution")
         client.publish('mqttPaul', id)
     })
 
+app.route("/distribution/etudiant")
+    .get((req, res) => {
+        res.send("Calendrier")
+    })
+    .post((req, res) => {
+        
+    })
+
 app.route("/meteo")
     .get((req, res) => {
         res.send("Meteop")
@@ -45,6 +53,11 @@ app.route("/meteo")
 app.route("/editeur")
     .get((req, res) => {
         res.render("pages/editeur")
+    })
+
+app.route("/INFO")
+    .get((req, res) => {
+        res.render("pages/info")
     })
 
 app.listen(3000, () => {
