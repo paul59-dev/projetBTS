@@ -56,11 +56,25 @@ a {
 .class5 {
     width: 250px;
     height: 300px;
+    text-align: center;
     background-color: white;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     font-size: 2em;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     border-radius: 20px;
     padding-top: 5px;
+}
+
+.container-img {
+    width: 100%;
+    height: 100%;
+}
+
+.small-image {
+    transform: scale(0.5);
+}
+
+.dragged-image {
+    transform: scale(0.8);
 }

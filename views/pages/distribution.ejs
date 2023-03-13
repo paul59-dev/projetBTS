@@ -39,6 +39,7 @@
 				
 				/*e.dataTransfer.setData("text",e.target.getAttribute("id"));*/
 				e.dataTransfer.setData("text/plain",event.target.id);
+				$(this).addClass("dragged-image"); // Ajouter la classe dragged-image
 			}
 
 			function over(e){
@@ -114,6 +115,9 @@
 					const dropzone = event.target;
 					const newElement = draggableElement.cloneNode(true);
 
+					newElement.classList.remove("dragged-image"); // Supprimer la classe dragged-image
+  					newElement.classList.add("small-image"); // Ajouter la classe small-image
+
 					dropzone.appendChild(newElement);
 
 					/*event.dataTransfer.clearData();*/
@@ -150,10 +154,30 @@
 				</div>
 
 				<div class="class6">
-					<div class="class2" id="ELEVES" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Elèves</div>
-					<div class="class3" id="ETUDIANTS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Etudiants</div>
-					<div class="class4" id="PROFESSEURS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Professeurs</div>
-					<div class="class5" id="ADMINISTRATIFS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">Administrations</div>
+					<div class="class2">
+						<p>Elèves</p>
+						<div id="ELEVES" class="d-flex container-img" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event,this.id)">
+
+						</div>
+					</div>
+					<div class="class3">
+						<p>Etudiants</p>
+						<div id="ETUDIANTS" class="d-flex container-img" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">
+
+						</div>
+					</div>
+					<div class="class4"     id="PROFESSEURS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">
+						<p>Professeurs</p>
+						<div id="PROFESSEURS" class="d-flex container-img" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">
+
+						</div>
+					</div>
+					<div class="class5"     id="ADMINISTRATIFS" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">
+						<p>Administrations</p>
+						<div id="ADMINISTRATIFS" class="d-flex flex-start container-img" onDragStart="start(event)" 	onDragOver="return over(event)" onDrop="return drop(event,this.id)">
+
+						</div>
+					</div>
 				</div>
 				<!--<div class="class2" onDragStart="start(event)" onDragOver="return over(event)" onDrop="return drop(event)" onDragLeave="leave(event)">-->
 
